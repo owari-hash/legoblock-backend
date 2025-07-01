@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'legoblock.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',  # from URL
-        'USER': 'postgres',  # from URL
-        'PASSWORD': 'jWWlqdGJeLvXwOoZTvCylTTDFDhlmobw',  # from URL
-        'HOST': 'switchyard.proxy.rlwy.net',  # from URL
-        'PORT': '26816',  # from URL
+        'NAME': 'blockdb',
+        'USER': 'blockdbuser',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
