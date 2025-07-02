@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'blockdb',
         'USER': 'blockdbuser',
         'PASSWORD': 'your_password',
-        'HOST': 'localhost',
+        'HOST': '13.237.58.62',
         'PORT': '5432',
     }
 }
