@@ -7,7 +7,15 @@ class ProductType(models.Model):
     def __str__(self):
         return self.name
 
+from django.db import models
+
 class Product(models.Model):
+    DELIVERY_TYPE_CHOICES = [
+        ('pickup', 'Pickup'),
+        ('delivery', 'Delivery'),
+        ('both', 'Pickup & Delivery'),
+    ]
+
     name = models.CharField(max_length=100)
     product_type = models.ForeignKey(ProductType, on_delete=models.SET_NULL, null=True, blank=True)
 
@@ -27,6 +35,8 @@ class Product(models.Model):
     tags = models.CharField(max_length=255, blank=True, help_text="comma-separated")
     is_featured = models.BooleanField(default=False)
 
+    delivery_type = models.CharField(max_length=10, choices=DELIVERY_TYPE_CHOICES, default='both')
+
     @property
     def image(self):
         return self.image_url
@@ -36,3 +46,4 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+

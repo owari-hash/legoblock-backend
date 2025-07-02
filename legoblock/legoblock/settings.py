@@ -42,7 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'product',
     'order',
+    'django_filters',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -84,7 +89,7 @@ DATABASES = {
         'NAME': 'blockdb',
         'USER': 'blockdbuser',
         'PASSWORD': 'your_password',
-        'HOST': 'localhost',
+        'HOST': '13.237.58.62',
         'PORT': '5432',
     }
 }

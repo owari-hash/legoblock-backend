@@ -3,9 +3,27 @@ from rest_framework import viewsets
 from .models import Product, ProductType
 from .serializers import ProductSerializer, ProductTypeSerializer
 
+from rest_framework import viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
+from product.models import Product
+from product.serializers import ProductSerializer
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = {
+        'price_mnt': ['gte', 'lte'],
+        'delivery_type': ['exact'],
+        'in_stock': ['exact'],
+    }
+    search_fields = ['name', 'description', 'tags']
+    ordering_fields = ['created_at', 'price_mnt', 'name']
+
+    # Optionally, override get_queryset to add custom filtering logic
+
+
 class ProductTypeViewSet(viewsets.ModelViewSet):
     queryset = ProductType.objects.all()
     serializer_class = ProductTypeSerializer
